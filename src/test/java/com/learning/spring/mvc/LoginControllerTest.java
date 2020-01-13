@@ -18,7 +18,7 @@ public class LoginControllerTest {
 	@Test
 	public void test() throws Exception
 	{
-		this.mockMvc.perform(get("/test/hello"));
+		this.mockMvc.perform(get("/test/hello")).andExpect(status().isOk());
 	}
 
 }
