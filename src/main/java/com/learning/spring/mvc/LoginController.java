@@ -9,16 +9,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("test")
+@RequestMapping("/")
 public class LoginController {
 
-	@GetMapping(value = "/hello", produces = MediaType.TEXT_PLAIN_VALUE)
+	@GetMapping(value = "hello", produces = MediaType.TEXT_PLAIN_VALUE)
 	public String getHello() {
 		return "Hello from controller";
 		
 	}
 	
-	@GetMapping(value = "/", produces = MediaType.TEXT_PLAIN_VALUE)
+	@GetMapping(value = "", produces = MediaType.TEXT_PLAIN_VALUE)
 	public String getRoot() {
 		return "Accessed the root URL !";
 		
