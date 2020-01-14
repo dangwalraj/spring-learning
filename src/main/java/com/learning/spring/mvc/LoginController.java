@@ -17,5 +17,12 @@ public class LoginController {
 		return "Hello from controller";
 		
 	}
+	
+	@GetMapping(value = "/", produces = MediaType.TEXT_PLAIN_VALUE)
+	public String getRoot() {
+		return "Accessed the root URL";
+		
+	}
+
 
 }
