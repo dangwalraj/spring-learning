@@ -23,9 +23,17 @@ public class BasicSecurityManager extends WebSecurityConfigurerAdapter {
 		authorizeRequests().antMatchers("/").permitAll()
 		.anyRequest().authenticated()
 		.and()
+		.formLogin().loginPage("/login")
+		.defaultSuccessUrl("/home")
+		.failureUrl("/login?error")
+		.permitAll()
+		.and()
+		.logout().invalidateHttpSession(true)
+		.deleteCookies("JSESSIONID");
+		/*.permitAll();
 		.httpBasic().and()
 		.logout()
-		.permitAll();
+		.permitAll();*/
 	}
 	
 	@Bean

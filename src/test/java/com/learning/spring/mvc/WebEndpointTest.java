@@ -3,7 +3,10 @@ package com.learning.spring.mvc;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -30,4 +33,18 @@ public class WebEndpointTest {
 		mockMvc.perform(get("/")).andExpect(status().isOk()).andExpect(content().string("Accessed the root URL !"));
 	}
 
+	@org.junit.Test
+	public void testLoginPageRedirection() throws Exception{
+		mockMvc.perform(get("/Login.html")).andDo(print()).andExpect(status().is3xxRedirection())
+				.andExpect(redirectedUrl("http://localhost/login"));
+				
+		
+	}
+	
+	@org.junit.Test
+	public void testLogin() throws Exception{
+		mockMvc.perform(get("/login")).andDo(print()).andExpect(status().isOk());
+				
+		
+	}
 }
