@@ -20,7 +20,7 @@ public class LoginController {
 	
 	@GetMapping(value = "/", produces = MediaType.TEXT_PLAIN_VALUE)
 	public String getRoot() {
-		return "Accessed the root URL";
+		return "Accessed the root URL !";
 		
 	}
 
