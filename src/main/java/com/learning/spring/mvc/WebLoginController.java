@@ -11,7 +11,7 @@ public class WebLoginController {
 	public String getLoginPage(Model model)
 	{
 		//model.addAttribute("user", new UserInfo());
-		return "login";
+		return "Login";
 	}
 	
 	@GetMapping("/home")
