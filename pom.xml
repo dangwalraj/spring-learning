@@ -98,6 +98,11 @@
 			<version>2.4.1</version><!--$NO-MVN-MAN-VER$ -->
 		</dependency>
 		<dependency>
+			<groupId>org.thymeleaf.extras</groupId>
+			<artifactId>thymeleaf-extras-springsecurity5</artifactId>
+		
+		</dependency>
+		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
