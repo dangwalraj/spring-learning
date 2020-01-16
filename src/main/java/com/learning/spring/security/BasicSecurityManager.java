@@ -20,7 +20,7 @@ public class BasicSecurityManager extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.
-		authorizeRequests().antMatchers("/").permitAll()
+		authorizeRequests().antMatchers("/","/css/**", "/js/**", "/images/**").permitAll()
 		.anyRequest().authenticated()
 		.and()
 		.formLogin().loginPage("/login")
