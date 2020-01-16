@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.w3.org/1999/xhtml"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"
+	th:src="@{css/bootstrap.min.css}">
+<!-- Latest compiled and minified JavaScript -->
+<script th:src="@{/js/jquery.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+
+</head>
+<body>
+	<!--header.html  that's here  -->
+	<div th:replace="fragments/header :: header" ></div>
+	<div id="container-fluid">
+	<div class="row">
+	<div class="col-12"></div>
+	</div>
+	<div class="row">
+	</div>
+	</div> <!-- End of empty container -->
+	<div id="root-container" class="container">
+		<div class="row">
+			<div class="col-3">
+				<div th:replace="fragments/menu :: menu"></div>
+			</div>
+			<!--  Let the menu be auto column -->
+			<div class="col-md-9">
+				<div layout:fragment="content"></div>
+			</div>
+			<!--  End of div for content -->
+		</div>
+		<!--  End of row div -->
+	</div>
+	<!--  End of container div -->
+	<!--footer.html  that's here  -->
+	<!--  <div th:replace="fragments/footer :: footer"></div> -->
+</body>
+</html>
