@@ -59,7 +59,7 @@ public class BasicSecurityManager extends WebSecurityConfigurerAdapter {
 	}
 	
 	@Bean
-	private AuthenticationFailureHandler getCustomHander() {
+	public AuthenticationFailureHandler getCustomHander() {
 		return (request, response, exception) ->
 		{
 			response.setStatus(HttpStatus.UNAUTHORIZED.value());
