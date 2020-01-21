@@ -7,7 +7,8 @@
 </head>
 <body>
 	
-	<div layout:fragment="content" class="container h-100">
+	<div layout:fragment="content" class="container mt-100" style="margin-top: 150px">
+	
 	<div class="alert alert-primary">
 	 <h2>Please provide your credentials</h2>
 		<form action="#" th:action="@{/login}" 
@@ -15,17 +16,17 @@
 			<div id="userForm" class="row">
 			<span th:text="${error}" class="alert alert-danger" th:remove="${message == null} ? tag"></span>
 			</div>
-			<div id="userForm" class="row">
+			<div id="userForm" class="row mt-3">
 			<div class="col-sm">User Name : </div>
 			<div class="col-sm"><input type="text" name="username" /></div>
 			<div class="col-sm"></div>
 			</div>
-			<div id="userForm" class="row">
+			<div id="userForm" class="row mt-3">
 			<div class="col-sm">Password : </div> 
 			<div class="col-sm"><input type="password" name="password" /></div>
 			<div class="col-sm"></div>
 			</div>
-			<div id="userForm" class="row">
+			<div id="userForm" class="row mt-3">
 			<div class="col-sm"></div> 
 			
 			<div class="col-sm"><input type="submit"
