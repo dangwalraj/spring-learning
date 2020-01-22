@@ -1,15 +1,17 @@
 package com.learning.spring.mvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -18,7 +20,7 @@ import com.learning.spring.springlearning.SpringLearningApplication;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest
-@ContextConfiguration(classes = SpringLearningApplication.class)
+@ContextConfiguration(classes = {SpringLearningApplication.class})
 public class WebEndpointTest {
 
 	@Autowired
@@ -44,7 +46,21 @@ public class WebEndpointTest {
 	@org.junit.Test
 	public void testLogin() throws Exception{
 		mockMvc.perform(get("/login")).andDo(print()).andExpect(status().isOk());
-				
+
 		
 	}
+	
+	@org.junit.Test
+	public void testLoginProcess() throws Exception{
+		UsernamePasswordAuthenticationToken user = new UsernamePasswordAuthenticationToken("user",  "password");
+		mockMvc.perform(post("/login").param("username", "user").param("password", "password").with(csrf()))
+				.andExpect(status().is3xxRedirection())
+				.andExpect(redirectedUrl("/home"));
+
+		
+	}
+	
+	// @Todo: create test cases for logout and authentication also.
+		
+	
 }
