@@ -1,40 +1,52 @@
 <!DOCTYPE html>
 <html xmlns:layout="http://www.w3.org/1999/xhtml"
-	layout:decorate="~{fragments/main_layout}"> 
+	layout:decorate="~{fragments/main_layout}">
 <head>
 <meta charset="ISO-8859-1">
 <title>Login</title>
 </head>
 <body>
-	
-	<div layout:fragment="content" class="container mt-100" style="margin-top: 150px">
-	
-	<div class="alert alert-primary">
-	 <h2>Please provide your credentials</h2>
-		<form action="#" th:action="@{/login}" 
-			method="post">
-			<div id="userForm" class="row">
-			<span th:text="${error}" class="alert alert-danger" th:remove="${message == null} ? tag"></span>
-			</div>
-			<div id="userForm" class="row mt-3">
-			<div class="col-sm">User Name : </div>
-			<div class="col-sm"><input type="text" name="username" /></div>
-			<div class="col-sm"></div>
-			</div>
-			<div id="userForm" class="row mt-3">
-			<div class="col-sm">Password : </div> 
-			<div class="col-sm"><input type="password" name="password" /></div>
-			<div class="col-sm"></div>
-			</div>
-			<div id="userForm" class="row mt-3">
-			<div class="col-sm"></div> 
+
+	<div layout:fragment="content" class="container mt-100"
+		style="margin-top: 150px">
+
+		<div class="alert alert-primary">
+			<h2>Please provide your credentials</h2>
+			<h3 class="alert alert-danger" th:if="${param.error}"> Invalid Username and Password.</h3>
+			<h3 class="alert alert-info" th:if="${param.logout}"> You are logged out.</h3>
 			
-			<div class="col-sm"><input type="submit"
-					value="Login" /></div>
-			<div class="col-sm"></div>
-			</div>
-		</form>
-		</div> <!--  Blue color background -->
+
+			<form action="#" th:action="@{/login}" method="post">
+			
+				<div id="userForm" class="row">
+					<!-- span th:text="${error}" class="alert alert-danger" th:remove="${message == null} ? tag"></span-->
+					<!-- span th:text="${param.error}" class="alert alert-danger" th:remove="${param.error == null} ? tag"></span-->
+				</div>
+				<div id="userForm" class="row mt-3">
+					<div class="col-sm">User Name :</div>
+					<div class="col-sm">
+						<input type="text" name="username" />
+					</div>
+					<div class="col-sm"></div>
+				</div>
+				<div id="userForm" class="row mt-3">
+					<div class="col-sm">Password :</div>
+					<div class="col-sm">
+						<input type="password" name="password" />
+					</div>
+					<div class="col-sm"></div>
+				</div>
+				<div id="userForm" class="row mt-3">
+					<div class="col-sm"></div>
+
+					<div class="col-sm">
+						<input type="submit" value="Login" />
+					</div>
+					<div class="col-sm"></div>
+				</div>
+			</form>
+		</div>
+		<!--  Blue color background -->
 	</div>
 </body>
 </html>

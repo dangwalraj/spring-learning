@@ -33,9 +33,9 @@ public class BasicSecurityManager extends WebSecurityConfigurerAdapter {
 		.and()
 		.formLogin().loginPage("/login")
 		.defaultSuccessUrl("/home")
-		.failureHandler(getCustomHander())
+	//	.failureHandler(getCustomHander())
 		
-		//.failureUrl("/login?error")
+		.failureUrl("/login?error")
 		.permitAll()
 		.and()
 		.logout().invalidateHttpSession(true)
@@ -63,6 +63,24 @@ public class BasicSecurityManager extends WebSecurityConfigurerAdapter {
 		return (request, response, exception) ->
 		{
 			response.setStatus(HttpStatus.UNAUTHORIZED.value());
+			response.sendRedirect("/login?error="+ exception.getMessage());
+//			Map<String, Object> data = new HashMap<String, Object>();
+//			data.put("timestamp", Calendar.getInstance().getTime());
+//			data.put("exception",  exception.getMessage());
+//			
+//			String objMapperOut = new ObjectMapper().writeValueAsString(data);
+//			System.out.println("Error from Login Page"+ objMapperOut);
+//			response.getOutputStream().println(new ObjectMapper().writeValueAsString(data)
+//					);
+		};
+		
+	}
+	
+	@Bean
+	public AuthenticationFailureHandler getCustomURLHander() {
+		return (request, response, exception) ->
+		{
+			response.setStatus(HttpStatus.UNAUTHORIZED.value());
 			Map<String, Object> data = new HashMap<String, Object>();
 			data.put("timestamp", Calendar.getInstance().getTime());
 			data.put("exception",  exception.getMessage());
@@ -74,5 +92,6 @@ public class BasicSecurityManager extends WebSecurityConfigurerAdapter {
 		};
 		
 	}
+
 
 }
