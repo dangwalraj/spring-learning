@@ -1,0 +1,2 @@
+INSERT INTO USERINFO (USERID, NAME, PASSWORD) VALUES ('admin', 'admin', 'admin');
+INSERT INTO USERINFO (USERID, NAME, PASSWORD) VALUES ('user', 'user', 'password');
