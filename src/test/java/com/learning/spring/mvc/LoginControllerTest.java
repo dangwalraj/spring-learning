@@ -4,22 +4,30 @@ package com.learning.spring.mvc;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
+import com.learning.spring.repository.UserInfoRepository;
+import com.learning.spring.repository.UserInfoService;
 import com.learning.spring.springlearning.SpringLearningApplication;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest
-@SpringBootTest(classes = SpringLearningApplication.class)
-
+@ContextConfiguration(classes = {SpringLearningApplication.class})
 public class LoginControllerTest {
 	
 	@Autowired
 	private MockMvc mockMvc;
+	@Mock
+	private UserInfoRepository userRepo;
+	
+	@MockBean
+	private UserInfoService loginMockService;
 	
 	@Before
 	public void setup() {
@@ -28,7 +36,7 @@ public class LoginControllerTest {
 	}
 	
 	@Test
-	public void test() throws Exception
+	public void testOne() throws Exception
 	{
 		//this.mockMvc.perform(get("/test/hello")).andExpect(status().isOk());
 		System.out.println(this.mockMvc);

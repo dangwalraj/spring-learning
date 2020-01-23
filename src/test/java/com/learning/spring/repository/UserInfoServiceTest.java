@@ -17,8 +17,6 @@ import com.learning.spring.entity.UserInfo;
 import com.learning.spring.springlearning.SpringLearningApplication;
 
 @RunWith(SpringRunner.class)
-@EnableJpaRepositories
-//@SpringBootTest
 @DataJpaTest
 @ContextConfiguration(classes = {SpringLearningApplication.class})
 //@Sql({"/datasource/schema.sql", "/datasource/data.sql"})
