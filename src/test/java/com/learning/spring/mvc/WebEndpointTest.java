@@ -12,6 +12,7 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.test.context.ContextConfiguration;
@@ -20,12 +21,13 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import com.learning.spring.repository.UserInfoRepository;
 import com.learning.spring.repository.UserInfoService;
+import com.learning.spring.security.BasicSecurityManager;
 import com.learning.spring.springlearning.SpringLearningApplication;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest
-@ContextConfiguration(classes = {SpringLearningApplication.class})
-//@ExtendWith(SpringExtension.class)
+@WebMvcTest(controllers = WebLoginController.class)
+@ContextConfiguration(classes = {WebLoginController.class, BasicSecurityManager.class, LoginController.class})
+//@ContextConfiguration(classes = {SpringLearningApplication.class})
 public class WebEndpointTest {
 
 	@Autowired

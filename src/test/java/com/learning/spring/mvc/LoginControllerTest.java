@@ -14,11 +14,12 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import com.learning.spring.repository.UserInfoRepository;
 import com.learning.spring.repository.UserInfoService;
+import com.learning.spring.security.BasicSecurityManager;
 import com.learning.spring.springlearning.SpringLearningApplication;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest
-@ContextConfiguration(classes = {SpringLearningApplication.class})
+@ContextConfiguration(classes = {WebLoginController.class, BasicSecurityManager.class, LoginController.class})
 public class LoginControllerTest {
 	
 	@Autowired
