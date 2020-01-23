@@ -2,7 +2,6 @@ package com.learning.spring.repository;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -21,33 +20,16 @@ import com.learning.spring.springlearning.SpringLearningApplication;
 @EnableJpaRepositories
 //@SpringBootTest
 @DataJpaTest
-
 @ContextConfiguration(classes = {SpringLearningApplication.class})
 //@Sql({"/datasource/schema.sql", "/datasource/data.sql"})
-public class UserInfoRepositoryTest {
+public class UserInfoServiceTest {
 
 	@Autowired
-	protected	UserInfoRepository userRepo;
+	private UserInfoService userInfoService;
 	
-	
-	
-	@Before
-	public void setup() {
-		System.out.println("Creating schema and sql");
-	}
-		
 	@Test
-	public void getUsers()
-	{
-		Iterable<UserInfo> ui = userRepo.findAll();
-		ui.forEach(user -> System.out.println(user));
-		
-	}
-	@Test
-	public void findByUserId()
-	{
-		UserInfo ui = userRepo.findByUserId("user");
+	public void getUserInfoFromService() {
+		UserInfo ui = userInfoService.findByUserId("user");
 		assertEquals(ui.getName(), "user");
 	}
-
 }
