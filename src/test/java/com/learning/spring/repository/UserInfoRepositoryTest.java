@@ -27,7 +27,7 @@ public class UserInfoRepositoryTest {
 	@Autowired
 	protected	UserInfoRepository userRepo;
 	
-	@InjectMocks
+	@Autowired
 	private UserInfoService userInfoService;
 	
 	@Test
