@@ -14,10 +14,13 @@ public class UserInfoService {
 	private UserInfoRepository userInfoRepo;
 	
 	
-	@Autowired private EntityManagerFactory entityManagerFactory;
-	
 	public UserInfo findByUserId(String userId)
 	{
 		return userInfoRepo.findByUserId(userId);
+	}
+	
+	public Iterable<UserInfo> findAllUsers()
+	{
+		return userInfoRepo.findAll();
 	}
 }

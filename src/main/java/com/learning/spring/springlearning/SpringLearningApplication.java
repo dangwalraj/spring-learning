@@ -8,11 +8,9 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"com.learning.spring", "com.learning.spring.entity", 
-		"com.learning.spring.repository"})
-//@EnableAutoConfiguration 
-@EnableJpaRepositories(basePackages = "com.learning.spring.repository")
-@EntityScan(basePackages = {"com.learning.spring.entity"})
+@ComponentScan(basePackages = {"com.learning.spring"})
+@EnableJpaRepositories("com.learning.spring.repository")
+@EntityScan("com.learning.spring.entity")
 public class SpringLearningApplication {
 
 	public static void main(String[] args) {

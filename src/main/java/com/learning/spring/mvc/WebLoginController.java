@@ -14,9 +14,6 @@ import com.learning.spring.repository.UserInfoService;
 @Controller
 public class WebLoginController {
 
-	@Autowired
-	private UserInfoService userService;
-
 	/**
 	 * @TODO: Identify a better way to handle Login Process. Spring OOTB limits the error handling
 	 *        mechanism during Login Process.
