@@ -2,8 +2,10 @@ package com.learning.spring.mvc;
 
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +40,19 @@ public class WebEndpointTestRestTemplate {
 		mockMvc.perform(post("/login").param("username", "user").param("password", "password").with(csrf()))
 				.andExpect(status().is3xxRedirection())
 				.andExpect(redirectedUrl("/home"));
+
+		
+	}
+	
+	@org.junit.Test
+	public void testLogout() throws Exception{
+		UsernamePasswordAuthenticationToken user = new UsernamePasswordAuthenticationToken("user",  "password");
+		mockMvc.perform(post("/login").param("username", "user").param("password", "password").with(csrf()))
+				.andExpect(status().is3xxRedirection())
+				.andExpect(redirectedUrl("/home"));
+		
+		mockMvc.perform(get("logout")).andDo(print()).andExpect(status().isOk());
+		
 
 		
 	}

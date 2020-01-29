@@ -1,3 +1,5 @@
-Items to fix in this project<br>
-<li> Identify how to handle the parameters in web request.
-<li> How to add custom handler for login page.
+## Items to fix in WebLogin Controller.
+- [ ] Identify how to handle the parameters in web request.
+- [ ] How to add custom handler for login page.
+- [ ] After the user logs out, subsequent login request redirects <br> 
+     back to login page with menu visible to the user. Need to fix it.
