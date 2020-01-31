@@ -1,15 +1,11 @@
 package com.learning.spring.mvc;
 
-import java.util.Optional;
+import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import com.learning.spring.repository.UserInfoService;
 
 @Controller
 public class WebLoginController {
@@ -22,8 +18,9 @@ public class WebLoginController {
 	 * @return
 	 */
 	@GetMapping(path = "/login" )
-	public String getLoginPage(@RequestParam(value = "error") Optional<String> error, Model model)
-	{
+	public String getLoginPage(@RequestParam Map<String,String> allParams, Model model) {
+
+		System.out.println( "Parameters are " + allParams.entrySet());
 		return "Login";
 	}
 	@GetMapping("/home")
