@@ -3,11 +3,15 @@ package com.learning.spring.entity;
 import java.lang.reflect.Field;
 import java.math.BigInteger;
 import java.util.Arrays;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -27,6 +31,51 @@ public class UserInfo extends BaseEntity{
 	
 	@Column(name="PASSWORD")
 	private String password;
+
+	@Column(name="LOCKED")
+	private boolean locked;
+	
+	@Column(name="PASSWORD_EXPIRED")
+	private boolean passwordExpired;
+	
+	@ManyToMany
+	@JoinTable(
+			name = "ROLE_MAPPING", 
+			joinColumns = @JoinColumn(name="USERID" , referencedColumnName = "USERID"),
+			
+			inverseJoinColumns = @JoinColumn(name="ROLEID", referencedColumnName = "ROLEID")
+			)
+	private Set<UserRoles> mappedRoles;
+	
+	public boolean isLocked() {
+		return locked;
+	}
+
+
+	public void setLocked(boolean locked) {
+		this.locked = locked;
+	}
+
+
+	public boolean isPasswordExpired() {
+		return passwordExpired;
+	}
+
+
+	public void setPasswordExpired(boolean passwordExpired) {
+		this.passwordExpired = passwordExpired;
+	}
+
+
+	public Set<UserRoles> getMappedRoles() {
+		return mappedRoles;
+	}
+
+
+	public void setMappedRoles(Set<UserRoles> mappedRoles) {
+		this.mappedRoles = mappedRoles;
+	}
+
 
 	public String toString() {
 		

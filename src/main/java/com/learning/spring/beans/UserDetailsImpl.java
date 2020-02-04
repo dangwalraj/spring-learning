@@ -20,10 +20,9 @@ public class UserDetailsImpl implements UserDetails {
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		
-		List<GrantedAuthority> auths = new ArrayList<GrantedAuthority>();
-		auths.add(new GrantedAuthorityImpl("USER"));
-		auths.add(new GrantedAuthorityImpl("ADMIN"));
-		
+		final List<GrantedAuthority> auths = new ArrayList<GrantedAuthority>();
+		ui.getMappedRoles().forEach(role ->
+			auths.add(new GrantedAuthorityImpl(role.getName())));
 		return auths;
 	}
 

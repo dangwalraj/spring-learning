@@ -37,7 +37,9 @@ public class UserInfoRepositoryTest {
 	public void getUsers()
 	{
 		Iterable<UserInfo> ui = userRepo.findAll();
-		ui.forEach(user -> System.out.println(user));
+		ui.forEach((user) -> {
+			System.out.println(user );
+		user.getMappedRoles().forEach(u -> System.out.println(u.getName()));});
 		
 	}
 	@Test

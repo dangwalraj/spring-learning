@@ -1,11 +1,12 @@
 package com.learning.spring.entity;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
-public class BaseEntity {
+public class BaseEntity implements Serializable {
 
 	/**
 	 * Helper function to dump an object as string.
@@ -18,7 +19,13 @@ public class BaseEntity {
 		.forEach(elem -> {
 			elem.setAccessible(true);
 			try {
-				sb.append(elem.getName() + " : " + elem.get(this) + ", ");
+				// @TODO: Fix the issue for iterables.
+				/*if(elem.getType().)
+				{
+					
+				}
+				else*/
+					sb.append(elem.getName() + " : " + elem.get(this)  + ", ");
 				
 			} catch (IllegalArgumentException e) {
 				// TODO Auto-generated catch block

@@ -51,7 +51,8 @@ public class WebEndpointTestRestTemplate {
 				.andExpect(status().is3xxRedirection())
 				.andExpect(redirectedUrl("/home"));
 		
-		mockMvc.perform(get("logout")).andDo(print()).andExpect(status().isOk());
+		mockMvc.perform(get("logout")).andDo(print()).andExpect(status().is3xxRedirection())
+		.andExpect(redirectedUrl("http://localhost/login"));
 		
 
 		
