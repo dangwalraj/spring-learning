@@ -6,8 +6,10 @@ import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.learning.spring.entity.UserInfo;
+
 
 public class UserDetailsImpl implements UserDetails {
 	

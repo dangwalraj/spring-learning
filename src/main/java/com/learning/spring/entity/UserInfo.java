@@ -7,6 +7,7 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
@@ -38,7 +39,7 @@ public class UserInfo extends BaseEntity{
 	@Column(name="PASSWORD_EXPIRED")
 	private boolean passwordExpired;
 	
-	@ManyToMany
+	@ManyToMany (fetch = FetchType.EAGER)
 	@JoinTable(
 			name = "ROLE_MAPPING", 
 			joinColumns = @JoinColumn(name="USERID" , referencedColumnName = "USERID"),
